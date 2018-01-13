@@ -1,5 +1,7 @@
 # Regression Template
 
+# GOAL: Predict a fair salary for the candidate with 6.5 years of experience.
+
 # Importing the libraries
 import numpy as np
 import matplotlib.pyplot as plt

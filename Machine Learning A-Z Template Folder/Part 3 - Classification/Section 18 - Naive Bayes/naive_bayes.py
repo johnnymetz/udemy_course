@@ -1,5 +1,7 @@
 # Naive Bayes
 
+# GOAL: Predict whether a person walks to work or drives to work based on age and salary.
+
 # Importing the libraries
 import numpy as np
 import matplotlib.pyplot as plt
@@ -11,7 +13,7 @@ X = dataset.iloc[:, [2, 3]].values
 y = dataset.iloc[:, 4].values
 
 # Splitting the dataset into the Training set and Test set
-from sklearn.cross_validation import train_test_split
+from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25, random_state = 0)
 
 # Feature Scaling
@@ -24,6 +26,7 @@ X_test = sc.transform(X_test)
 from sklearn.naive_bayes import GaussianNB
 classifier = GaussianNB()
 classifier.fit(X_train, y_train)
+# print(classifier.score(X_test, y_test))  # 0.90
 
 # Predicting the Test set results
 y_pred = classifier.predict(X_test)
@@ -31,6 +34,7 @@ y_pred = classifier.predict(X_test)
 # Making the Confusion Matrix
 from sklearn.metrics import confusion_matrix
 cm = confusion_matrix(y_test, y_pred)
+# print(cm)
 
 # Visualising the Training set results
 from matplotlib.colors import ListedColormap

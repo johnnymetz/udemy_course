@@ -14,7 +14,8 @@ y = dataset.iloc[:, 4].values
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 labelencoder = LabelEncoder()
 X[:, 3] = labelencoder.fit_transform(X[:, 3])  # str category --> numerical encoding
-onehotencoder = OneHotEncoder(categorical_features = [3])
+mapping = {i: value for i, value in enumerate(labelencoder.classes_)}  # mapping
+onehotencoder = OneHotEncoder(categorical_features = [3])  # array of num encoding indices
 X = onehotencoder.fit_transform(X).toarray()  # add new 0, 1 columns
 
 # Avoiding the Dummy Variable Trap
@@ -37,6 +38,7 @@ y_pred = regressor.predict(X_test)
 # Building the optimal model using Backward Elimination
 import statsmodels.formula.api as sm
 X = np.append(arr=np.ones((50, 1)).astype(int), values=X, axis=1)
+# # X is an array of ones (constant) followed by the x values
 # X_opt = X[:, [0, 1, 2, 3, 4, 5]]
 # regressor_OLS = sm.OLS(endog=y, exog=X_opt).fit()
 # print(regressor_OLS.summary())
