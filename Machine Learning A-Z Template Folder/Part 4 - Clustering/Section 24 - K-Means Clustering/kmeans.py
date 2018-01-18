@@ -10,7 +10,7 @@ dataset = pd.read_csv('Mall_Customers.csv')
 # ['CustomerID', 'Gender', 'Age', 'Annual Income (k$)', 'Spending Score (1-100)']
 X = dataset.iloc[:, [3, 4]].values
 
-# Dataset is not split in unsupervised learning (we don't know the answers)
+# Dataset is not split
 
 # Feature Scaling not required
 
